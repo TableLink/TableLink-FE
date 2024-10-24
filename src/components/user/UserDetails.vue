@@ -1,8 +1,11 @@
 <script>
 import axios from '@/axios';
+import {defineComponent} from "vue";
+import MainHeader from "@/components/layout/MainHeader.vue";
 
-export default {
+export default defineComponent({
     name: "UserDetails",
+    components: {MainHeader},
     data() {
         return {
             user: null,
@@ -17,7 +20,7 @@ export default {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                this.user = response.data;
+                this.user = response.data.result;
             } else {
                 this.$route.push("/signin"); // 토큰 없으면 로그인 페이지로 리다이렉트
             }
@@ -26,23 +29,38 @@ export default {
         }
     },
     methods: {
-        userUpdate(){
+        userUpdate() {
             this.$router.push("/update-user");
+        },
+        async userDelete() {
+            try {
+                await axios.delete("/api/user/delete");
+
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
+
+                this.$router.push("/")
+            } catch (error) {
+                console.error("회원가입 실패")
+            }
         }
-    }
-}
+    },
+});
 </script>
 
 <template>
-    <div class="UserDetails" v-if="user">
+    <MainHeader />
+
+    <div id="UserDetails" v-if="user">
         <h2>{{ user.nickname }}님의 프로필</h2>
         <p>아이디: {{ user.username }}</p>
         <p>비밀번호:
-            <input type="password" value="password" disabled />
+            <input type="password" value="password" disabled/>
         </p>
         <p>주소: {{ user.address }}</p>
         <p>전화번호: {{ user.phoneNumber }}</p>
         <button @click="userUpdate">회원정보 수정</button>
+        <button @click="userDelete">회원 탈퇴</button>
     </div>
 
 </template>

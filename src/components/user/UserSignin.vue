@@ -1,9 +1,12 @@
 <script>
 import axios from '@/axios';
 import {mapActions} from "vuex";
+import {defineComponent} from "vue";
+import MainHeader from "@/components/layout/MainHeader.vue";
 
-export default {
+export default defineComponent({
     name: 'UserSignin',
+    components: {MainHeader},
     data() {
         return {
             username: '', // 아이디
@@ -52,14 +55,18 @@ export default {
             }*/
         },
     }
-}
+})
 </script>
 
 <template>
+    <MainHeader />
     <div id="signin">
+        <h2>로그인</h2>
         <form @submit.prevent="signin">
-            <input v-model="username" type="email" required/>
-            <input v-model="password" type="password" required/>
+            <label>아이디</label>
+            <input v-model="username" type="email" placeholder="아이디" required/>
+            <label>비밀번호</label>
+            <input v-model="password" type="password" placeholder="비밀번호" required/>
             <button type="submit">로그인</button>
         </form>
     </div>
