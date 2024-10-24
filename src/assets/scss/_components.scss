@@ -1,0 +1,38 @@
+@import 'variables';
+@import 'mixins';
+// _components.scss
+#header {
+  background-color: $primary-color;
+  color: white;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .auth-buttons {
+    display: flex;
+    button {
+      @include header-button-styles($secondary-color);
+      margin-left: 10px;
+    }
+  }
+}
+
+// 회원가입
+#signup {
+  @include user-sign-style();
+  height: 100%;
+  p {
+    color: red; // 에러 메시지 색상
+  }
+}
+
+// 로그인
+#signin {
+  @include user-sign-style()
+}

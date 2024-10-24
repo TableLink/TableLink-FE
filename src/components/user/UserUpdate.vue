@@ -1,8 +1,11 @@
 <script>
 import axios from "@/axios";
+import {defineComponent} from "vue";
+import MainHeader from "@/components/layout/MainHeader.vue";
 
-export default {
+export default defineComponent({
     name: "UserUpdate",
+    components: {MainHeader},
     data() {
         return {
             nickname: '',
@@ -53,28 +56,29 @@ export default {
             }
         }
     }
-}
+});
 </script>
 
 <template>
-    <div class="UserUpdate">
+    <MainHeader/>
+    <div id="UserUpdate">
         <h2>회원 정보 수정</h2>
         <form @submit.prevent="updateUserInfo">
             <div>
                 <label>닉네임:</label>
-                <input v-model="nickname" type="text" required />
+                <input v-model="nickname" type="text" required/>
             </div>
             <div>
                 <label>비밀번호:</label>
-                <input v-model="password" type="password" />
+                <input v-model="password" type="password"/>
             </div>
             <div>
                 <label>전화번호:</label>
-                <input v-model="phoneNumber" type="text" required />
+                <input v-model="phoneNumber" type="text" required/>
             </div>
             <div>
                 <label>주소:</label>
-                <input v-model="address" type="text" required />
+                <input v-model="address" type="text" required/>
             </div>
             <button type="submit">수정</button>
         </form>
