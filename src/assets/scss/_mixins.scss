@@ -1,0 +1,46 @@
+@import 'variables';
+// _mixins.scss
+@mixin header-button-styles($bg-color) {
+  background-color: $bg-color;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+@mixin user-sign-style(){
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
+  color: #FFFFFF;
+  background-color: $primary-color;
+  margin: 100px auto;
+  width: 600px;
+  height: 100%;
+  padding: 40px;
+
+  form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input {
+
+      width: 70%;
+    }
+    button{
+      background-color: $background-color;
+      margin-top: 40px;
+      width: 75%;
+      height: 30px;
+      cursor: pointer;
+      border: 1px none #ccc;
+      border-radius: $border-radius;
+    }
+  }
+}
