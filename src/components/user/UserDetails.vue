@@ -15,7 +15,7 @@ export default defineComponent({
         try {
             const token = localStorage.getItem("accessToken");
             if (token) {
-                const response = await axios.get("/api/user/details", {
+                const response = await axios.get("/api/user", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

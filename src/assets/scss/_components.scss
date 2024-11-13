@@ -16,6 +16,7 @@
 
   .auth-buttons {
     display: flex;
+
     button {
       @include header-button-styles($secondary-color);
       margin-left: 10px;
@@ -23,10 +24,22 @@
   }
 }
 
+#category {
+  .cat-nav {
+    display: flex;
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0;
+    font-size: 20px;
+    justify-content: space-evenly;
+  }
+}
+
 // 회원가입
 #signup {
   @include user-sign-style();
   height: 100%;
+
   p {
     color: red; // 에러 메시지 색상
   }
@@ -35,4 +48,9 @@
 // 로그인
 #signin {
   @include user-sign-style()
+}
+
+// 게시글
+#post-list{
+  @include post-list-style()
 }

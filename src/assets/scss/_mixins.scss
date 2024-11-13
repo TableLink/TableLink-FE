@@ -14,7 +14,8 @@
   }
 }
 
-@mixin user-sign-style(){
+// 로그인 스타일
+@mixin user-sign-style() {
   border: 1px solid #ccc;
   border-radius: $border-radius;
   color: #FFFFFF;
@@ -29,11 +30,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     input {
 
       width: 70%;
     }
-    button{
+
+    button {
       background-color: $background-color;
       margin-top: 40px;
       width: 75%;
@@ -42,5 +45,15 @@
       border: 1px none #ccc;
       border-radius: $border-radius;
     }
+  }
+}
+
+@mixin post-list-style() {
+  width: 100%;
+  margin-bottom: 1rem;
+  th, td{
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
   }
 }
